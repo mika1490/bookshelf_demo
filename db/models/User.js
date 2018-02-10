@@ -12,7 +12,7 @@ class User extends bookshelf.Model {
   get hasTimestamps() {return true}
 
   posts() {
-    return this.hasMany(Post);
+    return this.hasMany(Post, `author_id`);
   }
 }
 

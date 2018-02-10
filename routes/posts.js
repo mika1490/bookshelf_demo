@@ -15,12 +15,23 @@ router.route(`/`)
 
     })
     .catch(err => {
-      return res.json({ message: err.message })
+      return res.json({ message: err.message, code: err.code })
     })
   })
-  .get();
+  .get( (req, res) => {
+    return Post
+      .fetchAll()
+      .then(posts => {
+        return res.json(posts);
+      })
+      .catch(err => {
+        return res.json({ message: err.message, code: err.code })
+      })
+  });
 
 router.route(`/:id`)
-  .get();
+  .get((req, res) => {
+   
+  });
 
 module.exports = router;

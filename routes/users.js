@@ -33,7 +33,7 @@ router.route(`/`)
   .get((req, res) => {
     return new User()
     .where({ id: req.params.id })
-    .fetch()
+    .fetch({ withRelated: [`posts`]})
     .then(user => {
       if(!user) {
         throw new Error(`User Not Found`);
