@@ -1,5 +1,6 @@
 const bookshelf = require(`./bookshelf`);
 
+const Post = require(`./Post`)
 //ES5
 // const User = bookshelf.Model.extend({
 //   tableName: `users`
@@ -9,6 +10,10 @@ const bookshelf = require(`./bookshelf`);
 class User extends bookshelf.Model {
   get tableName() {return `users`}
   get hasTimestamps() {return true}
+
+  posts() {
+    return this.hasMany(Post);
+  }
 }
 
 module.exports = User;
